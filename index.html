@@ -7,7 +7,6 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
-    <script src="Java.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,15 +21,51 @@
             type="submit"
             value="Click me!"
             id="submit"
-            onclick="calculateMyAge()"
+            onclick="calculateAge()"
           />
+          <!--onclick this startes the calculateAge function-->
         </p>
         <div class="resultBlock">
           <p>Seconds<span id="seconds"></span></p>
         </div>
-        <h5 class="error hide" id="error"></h5>
-        <p>Your age: <span id="test">?</span> year(s) old!</p>
+        <h5 class="error" id="error"></h5>
+        <p>Your age: <span id="yearsAndMonths">?</span></p>
       </div>
     </div>
+
+    <script>
+      var secondsInAMinute = 60;
+      var minutesInAnHour = 60;
+      var hoursInADay = 24;
+      var daysInAYear = 364.25;
+
+      function parseYearsMonths(age) {
+        const [years, months] = age.split(".").map(Number);
+        let result = `${years} year${years !== 1 ? "s" : ""}`; <!--this makes a var named result which holds the value of if else if years not = 1 dont add s if it is add s this is used for if user enters value more than 1 it says years else year-->
+        if (months) {
+          result += ` and ${months} month${months !== 1 ? "s" : ""}`;        <!--same-->
+        }
+        return result;
+      }
+      function calculateAge() {
+        const ageInput = parseFloat(document.getElementById("age").value);
+        if (isNaN(ageInput) || ageInput <= 0) {
+          document.getElementById("error").textContent =
+            "Please enter a valid age.";
+          document.getElementById("yearsAndMonths").textContent = "?";
+          document.getElementById("seconds").textContent = "";
+          return;
+        }
+        const seconds =
+          ageInput *
+          secondsInAMinute *
+          minutesInAnHour *
+          hoursInADay *
+          daysInAYear;
+        document.getElementById("seconds").textContent = seconds;
+        const parsedResult = parseYearsMonths(ageInput.toString());
+        document.getElementById("yearsAndMonths").textContent = parsedResult;
+      }
+    </script>
   </body>
 </html>
