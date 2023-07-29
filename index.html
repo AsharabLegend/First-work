@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <title>Age calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="Java.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <h2>Calculate your Age in Seconds</h2>
+      <div class="large">
+        <p class="inputFields">
+          <label>Enter your age:</label> <input type="text" id="age" />
+          <input
+            type="submit"
+            value="Click me!"
+            id="submit"
+            onclick="calculateMyAge()"
+          />
+        </p>
+        <div class="resultBlock">
+          <p>Seconds<span id="seconds"></span></p>
+        </div>
+        <h5 class="error hide" id="error"></h5>
+        <p>Your age: <span id="test">?</span> year(s) old!</p>
+      </div>
+    </div>
+  </body>
+</html>
